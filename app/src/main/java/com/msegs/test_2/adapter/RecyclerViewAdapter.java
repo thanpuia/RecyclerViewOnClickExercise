@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.msegs.test_2.R;
@@ -37,6 +38,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         holder.textView.setText(tests.get(position).getName());
+        int[] myBgResources = new int[]{R.drawable.bg1,R.drawable.bg2,R.drawable.bg3,R.drawable.bg4,
+                R.drawable.bg5,R.drawable.bg6,R.drawable.bg7,R.drawable.bg8};
+        holder.cardView.setBackgroundResource(myBgResources[position]);
     }
 
     @Override
@@ -47,10 +51,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
+        CardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             this.textView = itemView.findViewById(R.id.frame_text_tv);
+            this.cardView = itemView.findViewById(R.id.card_view);
+
         }
     }
 }

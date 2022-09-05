@@ -1,6 +1,7 @@
 package com.msegs.test_2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,20 +26,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tests = new ArrayList<>();
 
-        Test test = new Test();
-        test.setName("name1");
-        test.setId(1);
-        tests.add(test);
-        Test test2 = new Test();
-        test2.setName("name2");
-        test2.setId(2);
-        tests.add(test2);
+        int sample = 8;
+        for(int i=0;i<sample;i++){
+            Test test = new Test();
+            int j=i+1;
+            test.setName("name"+j);
+            test.setId(j);
+            tests.add(test);
+        }
 
         recyclerView = findViewById(R.id.recycler_view);
 
         adapter = new RecyclerViewAdapter(tests,getApplicationContext());
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
